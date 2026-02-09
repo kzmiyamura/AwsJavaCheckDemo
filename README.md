@@ -1,0 +1,2 @@
+# AwsJavaCheckDemo
+AWSベースのJava物流最適化エンジン向けDevSecOpsデモ。ルート計算時のスレッドセーフのリスクや在庫管理でのメモリリークなど、AI生成コード特有の問題を自動ガードレール（Checkstyle, SpotBugs, SonarQube）で検知する仕組みを展示。
