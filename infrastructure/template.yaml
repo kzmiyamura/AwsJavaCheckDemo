@@ -1,0 +1,60 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Logistics Demo - Lambda + S3 (セキュリティ問題を含む)'
+
+Resources:
+  # BAD: S3バケットの暗号化が無効
+  LogisticsResultBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'logistics-results-${AWS::AccountId}'
+      # BAD: BucketEncryption が設定されていない
+      # BAD: PublicAccessBlockConfiguration が設定されていない
+      VersioningConfiguration:
+        Status: Enabled
+
+  # BAD: 過剰なIAM権限
+  LogisticsLambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: S3Access
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              # BAD: S3への全アクセス権限（最小権限の原則違反）
+              - Effect: Allow
+                Action: 's3:*'
+                Resource: '*'
+
+  LogisticsFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: LogisticsOptimizer
+      Runtime: java17
+      Handler: com.logistics.demo.LambdaHandler::handleRequest
+      Role: !GetAtt LogisticsLambdaRole.Arn
+      Code:
+        ZipFile: |
+          // Placeholder
+      MemorySize: 512
+      Timeout: 60
+      Environment:
+        Variables:
+          BUCKET_NAME: !Ref LogisticsResultBucket
+          # BAD: 環境変数に機密情報を平文で保存
+          API_KEY: 'hardcoded-api-key-12345'
+
+Outputs:
+  BucketName:
+    Value: !Ref LogisticsResultBucket
+  FunctionArn:
+    Value: !GetAtt LogisticsFunction.Arn

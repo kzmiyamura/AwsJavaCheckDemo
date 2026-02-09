@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+    "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+    <property name="severity" value="error"/>
+    
+    <module name="TreeWalker">
+        <!-- スレッドセーフではないコレクションの使用を検出 -->
+        <module name="IllegalType">
+            <property name="illegalClassNames" value="java.util.HashMap, java.util.ArrayList, java.util.HashSet"/>
+            <message key="illegal.type" 
+                     value="Use thread-safe collections (ConcurrentHashMap, CopyOnWriteArrayList) in multi-threaded code"/>
+        </module>
+        
+        <!-- 未使用のインポートを検出 -->
+        <module name="UnusedImports"/>
+        
+        <!-- try-with-resourcesの使用を推奨 -->
+        <module name="Regexp">
+            <property name="format" value="S3Client\.builder\(\).*\.build\(\);"/>
+            <property name="illegalPattern" value="true"/>
+            <property name="message" value="Use try-with-resources for S3Client to prevent resource leaks"/>
+        </module>
+    </module>
+</module>

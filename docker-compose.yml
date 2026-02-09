@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  sonarqube:
+    image: sonarqube:community
+    ports:
+      - "9000:9000"
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_logs:/opt/sonarqube/logs
+      - sonarqube_extensions:/opt/sonarqube/extensions
+
+  maven:
+    image: maven:3.9-eclipse-temurin-17
+    working_dir: /app
+    volumes:
+      - .:/app
+      - maven_cache:/root/.m2
+    command: tail -f /dev/null
+
+volumes:
+  sonarqube_data:
+  sonarqube_logs:
+  sonarqube_extensions:
+  maven_cache:
