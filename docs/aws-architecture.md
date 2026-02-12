@@ -21,7 +21,7 @@ graph TD
         S3[S3 Bucket<br/>Static Assets]:::storage
         IGW[Internet Gateway]:::network
 
-        subgraph VPC [VPC (10.0.0.0/16)]
+        subgraph VPC ["VPC (10.0.0.0/16)"]
             style VPC fill:#ffffff,stroke:#232F3E,stroke-width:2px
 
             subgraph Public_AZ1 [Availability Zone A]
@@ -47,7 +47,7 @@ graph TD
             subgraph App_AZ1 [Availability Zone A]
                 style App_AZ1 fill:#e6f7ff,stroke:#0073bb,stroke-dasharray: 5 5
 
-                subgraph Priv_App1 [Private Subnet (App)]
+                subgraph Priv_App1 ["Private Subnet (App)"]
                     style Priv_App1 fill:none,stroke:none
                     JavaApp1[EC2 / Fargate<br/>Java App]:::compute
                 end
@@ -56,7 +56,7 @@ graph TD
             subgraph App_AZ2 [Availability Zone C]
                 style App_AZ2 fill:#e6f7ff,stroke:#0073bb,stroke-dasharray: 5 5
 
-                subgraph Priv_App2 [Private Subnet (App)]
+                subgraph Priv_App2 ["Private Subnet (App)"]
                     style Priv_App2 fill:none,stroke:none
                     JavaApp2[EC2 / Fargate<br/>Java App]:::compute
                 end
@@ -65,7 +65,7 @@ graph TD
             subgraph DB_AZ1 [Availability Zone A]
                 style DB_AZ1 fill:#e6f7ff,stroke:#0073bb,stroke-dasharray: 5 5
 
-                subgraph Priv_DB1 [Private Subnet (DB)]
+                subgraph Priv_DB1 ["Private Subnet (DB)"]
                     style Priv_DB1 fill:none,stroke:none
                     RDS_Master[(RDS Master<br/>MySQL/Postgre)]:::database
                     Redis_P[(ElastiCache<br/>Primary)]:::database
@@ -75,7 +75,7 @@ graph TD
             subgraph DB_AZ2 [Availability Zone C]
                 style DB_AZ2 fill:#e6f7ff,stroke:#0073bb,stroke-dasharray: 5 5
 
-                subgraph Priv_DB2 [Private Subnet (DB)]
+                subgraph Priv_DB2 ["Private Subnet (DB)"]
                     style Priv_DB2 fill:none,stroke:none
                     RDS_Standby[(RDS Standby)]:::database
                     Redis_R[(ElastiCache<br/>Replica)]:::database
