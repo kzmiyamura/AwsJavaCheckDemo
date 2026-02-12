@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: aws-java-check-demo
+  
+  # データソース設定
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: # パスワードなし（開発環境のみ許容）
+  
+  # JPA設定
+  jpa:
+    hibernate:
+      ddl-auto: create-drop # 本番環境では危険
+    show-sql: true # 本番環境では無効化すべき
+    properties:
+      hibernate:
+        format_sql: true
+        # use_sql_comments: true # コメントなし
+  
+  # H2 Console（セキュリティリスク）
+  h2:
+    console:
+      enabled: true # 本番環境では無効化すべき
+      path: /h2-console
+  
+  # Actuator設定
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "*" # 全エンドポイント公開（危険）
+    endpoint:
+      health:
+        show-details: always # 詳細情報を常に表示（情報漏洩リスク）
+
+# ログレベル
+logging:
+  level:
+    root: INFO
+    com.logistics.demo: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE # 本番環境では危険
+
+# AWS設定（ハードコード）
+aws:
+  region: us-east-1
+  credentials:
+    access-key: AKIAIOSFODNN7EXAMPLE # ハードコード（危険）
+    secret-key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY # ハードコード（危険）

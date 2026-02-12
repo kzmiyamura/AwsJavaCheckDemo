@@ -1,0 +1,132 @@
+# お客様コーディングポリシー設定
+# このファイルを .amazonq/customer-policy.yml として配置してください
+
+# 1. 業界・ドメイン情報
+industry: "logistics"  # logistics, finance, healthcare, retail, manufacturing, etc.
+data_types:
+  - "pii"              # 個人情報
+  - "confidential"     # 機密情報
+
+# 2. セキュリティ要件
+security:
+  # 認証情報管理
+  credentials:
+    hardcoded: "forbidden"  # forbidden, warning, test_only
+    allowed_methods:
+      - "secrets_manager"
+      - "parameter_store"
+    # - "environment_variables"  # 本番環境では非推奨
+  
+  # 暗号化要件
+  encryption:
+    s3: "required_sse_kms"        # required_sse_s3, required_sse_kms, recommended, not_required
+    dynamodb: "required_aws_managed"  # required_aws_managed, required_customer_managed, recommended, not_required
+  
+  # SQLインジェクション対策
+  sql_injection:
+    prepared_statement: "required"  # required, recommended
+    allowed_orm:
+      - "jpa"
+      - "mybatis"
+
+# 3. AWS リソース管理
+aws_resources:
+  # リソースクローズポリシー
+  resource_close:
+    sdk_clients: "try_with_resources_required"  # try_with_resources_required, manual_allowed, spring_bean_only
+    leak_tolerance: "forbidden"  # forbidden, warning
+  
+  # DynamoDB使用ポリシー
+  dynamodb:
+    scan_operation: "limited"  # forbidden, limited, allowed
+    batch_processing: "required"  # required, recommended
+    consistent_read: "required_for_critical"  # required, required_for_critical, recommended, not_required
+
+# 4. 並行処理・スレッドセーフティ
+concurrency:
+  # コレクション使用
+  collections:
+    hashmap_in_multithread: "forbidden"  # forbidden, warning, allowed_with_sync
+    allowed_thread_safe:
+      - "ConcurrentHashMap"
+      - "CopyOnWriteArrayList"
+  
+  # Executor Framework
+  executor_service:
+    shutdown_required: "required"  # required, recommended
+
+# 5. コーディング規約
+coding_standards:
+  # 命名規約
+  naming:
+    constant_case: "required"  # required, recommended
+    magic_numbers: "forbidden"  # forbidden, warning, allowed_except_common
+  
+  # 例外処理
+  exception_handling:
+    empty_catch: "forbidden"  # forbidden, log_required, comment_allowed
+    checked_exception: "recommended"  # recommended, convert_to_runtime
+
+# 6. パフォーマンス要件
+performance:
+  string_concatenation: "stringbuilder_required"  # stringbuilder_required, recommended
+  object_creation: "minimize_required"  # minimize_required, recommended
+
+# 7. 依存性注入（DI）
+dependency_injection:
+  framework: "spring"  # spring, guice, cdi, none
+  hardcoded_dependencies: "forbidden_except_dto"  # forbidden, warning, forbidden_except_dto
+
+# 8. テストポリシー
+testing:
+  coverage:
+    minimum: 70  # パーセンテージ
+  test_code_quality: "relaxed"  # same_as_production, relaxed, not_applied
+
+# 9. ログ・監視
+logging:
+  framework: "slf4j_logback"  # slf4j_logback, log4j2, jul
+  sensitive_data: "forbidden"  # forbidden, warning
+
+# 10. カスタムルール
+custom_rules:
+  # 業界固有ルール
+  industry_specific:
+    - name: "配送ステータス遷移チェック"
+      description: "配送ステータスは定義された順序でのみ遷移可能"
+      severity: "error"
+      pattern: "DeliveryStatus"
+    
+    - name: "在庫数は非負整数"
+      description: "在庫数にマイナス値を設定してはいけない"
+      severity: "error"
+      pattern: "inventory.*set.*"
+  
+  # 除外ルール
+  excluded_checks:
+    - "checkstyle:MagicNumber"  # 特定のファイルでのみ除外する場合は別途設定
+    # - "spotbugs:DM_DEFAULT_ENCODING"
+
+# 11. 重要度設定
+severity_override:
+  # 特定のチェックの重要度を変更
+  "spotbugs:SQL_INJECTION": "critical"
+  "checkstyle:ConstantName": "warning"
+
+# 12. Amazon Q レビュー設定
+amazon_q_review:
+  # このポリシーをAmazon Qのレビューに含める
+  enabled: true
+  
+  # レビュー時の追加指示
+  additional_instructions: |
+    - 物流業界のベストプラクティスに従っているか確認
+    - 配送ルート最適化アルゴリズムの効率性を評価
+    - マルチテナント対応が適切か確認
+  
+  # 重点的にチェックする項目
+  focus_areas:
+    - "thread_safety"
+    - "resource_management"
+    - "security"
+    - "performance"

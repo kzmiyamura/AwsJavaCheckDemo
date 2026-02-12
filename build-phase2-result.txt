@@ -1,0 +1,90 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.logistics:aws-java-check-demo >------------------
+[INFO] Building aws-java-check-demo 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ aws-java-check-demo ---
+[INFO] Deleting /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ aws-java-check-demo ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ aws-java-check-demo ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 26 source files with javac [debug target 17] to target/classes
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LambdaIssues.java:[14,9] raw型が見つかりました: java.util.List
+  汎用クラスjava.util.List<E>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LambdaIssues.java:[14,26] raw型が見つかりました: java.util.ArrayList
+  汎用クラスjava.util.ArrayList<E>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LambdaIssues.java:[15,18] raw型java.util.Listのメンバーとしてのadd(E)への無検査呼出しです
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LambdaIssues.java:[16,18] raw型java.util.Listのメンバーとしてのadd(E)への無検査呼出しです
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LambdaIssues.java:[18,22] raw型java.lang.IterableのメンバーとしてのforEach(java.util.function.Consumer<? super T>)への無検査呼出しです
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LambdaIssues.java:[25,9] raw型が見つかりました: java.util.List
+  汎用クラスjava.util.List<E>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LambdaIssues.java:[25,25] raw型が見つかりました: java.util.ArrayList
+  汎用クラスjava.util.ArrayList<E>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LambdaIssues.java:[27,20] raw型java.util.stream.Streamのメンバーとしてのfilter(java.util.function.Predicate<? super T>)への無検査呼出しです
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LambdaIssues.java:[28,17] raw型java.util.stream.Streamのメンバーとしての<R>map(java.util.function.Function<? super T,? extends R>)への無検査呼出しです
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LambdaIssues.java:[29,21] raw型java.util.stream.Streamのメンバーとしての<R,A>collect(java.util.stream.Collector<? super T,A,R>)への無検査呼出しです
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LanguageFeatures.java:[14,9] raw型が見つかりました: java.util.List
+  汎用クラスjava.util.List<E>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LanguageFeatures.java:[14,26] raw型が見つかりました: java.util.ArrayList
+  汎用クラスjava.util.ArrayList<E>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LanguageFeatures.java:[15,30] raw型java.util.stream.Streamのメンバーとしてのfilter(java.util.function.Predicate<? super T>)への無検査呼出しです
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/AnnotationIssues.java:[49,9] raw型が見つかりました: java.util.List
+  汎用クラスjava.util.List<E>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/AnnotationIssues.java:[49,26] raw型が見つかりました: java.util.ArrayList
+  汎用クラスjava.util.ArrayList<E>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/AnnotationIssues.java:[50,18] raw型java.util.Listのメンバーとしてのadd(E)への無検査呼出しです
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/AnnotationIssues.java:[51,16] 無検査変換
+  期待値: java.util.List<java.lang.String>
+  検出値:    java.util.List
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/GenericsIssues.java:[14,13] raw型が見つかりました: java.util.List
+  汎用クラスjava.util.List<E>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/GenericsIssues.java:[14,30] raw型が見つかりました: java.util.ArrayList
+  汎用クラスjava.util.ArrayList<E>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/GenericsIssues.java:[17,13] raw型が見つかりました: java.util.Map
+  汎用クラスjava.util.Map<K,V>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/GenericsIssues.java:[17,29] raw型が見つかりました: java.util.HashMap
+  汎用クラスjava.util.HashMap<K,V>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/GenericsIssues.java:[20,12] raw型が見つかりました: java.util.List
+  汎用クラスjava.util.List<E>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/GenericsIssues.java:[25,26] raw型が見つかりました: java.util.List
+  汎用クラスjava.util.List<E>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/GenericsIssues.java:[26,21] raw型java.util.ListのメンバーとしてのaddAll(java.util.Collection<? extends E>)への無検査呼出しです
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/GenericsIssues.java:[31,9] raw型が見つかりました: java.util.List
+  汎用クラスjava.util.List<E>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/GenericsIssues.java:[31,25] raw型が見つかりました: java.util.ArrayList
+  汎用クラスjava.util.ArrayList<E>の型引数がありません
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/GenericsIssues.java:[32,17] raw型java.util.Listのメンバーとしてのadd(E)への無検査呼出しです
+[WARNING] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/GenericsIssues.java:[33,17] raw型java.util.Listのメンバーとしてのadd(E)への無検査呼出しです
+[INFO] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LanguageFeatures.java: /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LanguageFeatures.javaは推奨されないAPIを使用またはオーバーライドしています。
+[INFO] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LanguageFeatures.java: 詳細は、-Xlint:deprecationオプションを指定して再コンパイルしてください。
+[INFO] 
+[INFO] --- checkstyle:3.3.0:check (default) @ aws-java-check-demo ---
+[INFO] 監査を開始しています...
+[ERROR] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/ConcurrencyIssues.java:5:8: 使用されないインポートです - java.util.concurrent.ConcurrentHashMap。 [UnusedImports]
+[ERROR] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/AnnotationIssues.java:47:23: この場所で、警告 'all' を抑制することはできません。 [SuppressWarnings]
+[ERROR] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/AnnotationIssues.java:55:23: この場所で、警告 'unchecked' を抑制することはできません。 [SuppressWarnings]
+[ERROR] /Users/kazukimiyamura/Desktop/0209/AwsJavaCheckDemo/src/main/java/com/logistics/demo/LanguageFeatures.java:5:8: 使用されないインポートです - java.util.stream.Stream。 [UnusedImports]
+監査が完了しました。
+[INFO] There are 4 errors reported by Checkstyle 9.3 with aws-checker/checkstyle.xml ruleset.
+[ERROR] src/main/java/com/logistics/demo/ConcurrencyIssues.java:[5,8] (imports) UnusedImports: 使用されないインポートです - java.util.concurrent.ConcurrentHashMap。
+[ERROR] src/main/java/com/logistics/demo/AnnotationIssues.java:[47,23] (annotation) SuppressWarnings: この場所で、警告 'all' を抑制することはできません。
+[ERROR] src/main/java/com/logistics/demo/AnnotationIssues.java:[55,23] (annotation) SuppressWarnings: この場所で、警告 'unchecked' を抑制することはできません。
+[ERROR] src/main/java/com/logistics/demo/LanguageFeatures.java:[5,8] (imports) UnusedImports: 使用されないインポートです - java.util.stream.Stream。
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.973 s
+[INFO] Finished at: 2026-02-10T10:47:36+09:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-checkstyle-plugin:3.3.0:check (default) on project aws-java-check-demo: You have 4 Checkstyle violations. -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
